@@ -57,11 +57,11 @@ export class PlayerController extends Component {
                 this.node.setPosition(this._targetPos);
                 this._startJump = false;
             } else {
-                // tween
+                // tween：补间动画
                 this.node.getPosition(this._curPos);
-                this._deltaPos.x = this._curJumpSpeed * deltaTime;
-                Vec3.add(this._curPos, this._curPos, this._deltaPos);
-                this.node.setPosition(this._curPos);
+                this._deltaPos.x = this._curJumpSpeed * deltaTime; // 偏移量等于时间乘以速度
+                Vec3.add(this._curPos, this._curPos, this._deltaPos); // 逐元素向量加法
+                this.node.setPosition(this._curPos); // 设置本地坐标
             }
         }
     }
