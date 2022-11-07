@@ -4,6 +4,10 @@ const { ccclass, property } = _decorator;
 @ccclass("PlayerController")
 export class PlayerController extends Component {
 
+    // 引用 Body 身上的 Animation
+    @property({ type: Animation })
+    public BodyAnim: Animation | null = null;
+
     // for fake tween
     // 是否接收到跳跃指令
     private _startJump: boolean = false;
@@ -47,6 +51,16 @@ export class PlayerController extends Component {
         this._curJumpSpeed = this._jumpStep / this._jumpTime;
         this.node.getPosition(this._curPos);
         Vec3.add(this._targetPos, this._curPos, new Vec3(this._jumpStep, 0, 0));
+
+        console.log(this.BodyAnim);
+        if (this.BodyAnim) {
+            if (step === 1) {
+                // 立即切换到指定动画状态。
+                this.BodyAnim.play('oneStep');
+            } else if (step === 2) {
+                this.BodyAnim.play('twoStep');
+            }
+        }
     }
 
     update (deltaTime: number) {
