@@ -36,6 +36,8 @@ export class GameManager extends Component {
     start () {
         // this.generateRoad();
         this.curState = GameState.GS_INIT;
+        // ?. 可选链写法
+        this.playerCtrl?.node.on('JumpEnd', this.onPlayerJumpEnd, this); // 监听角色跳跃消息，并调用判断函数
     }
 
     init() {
@@ -50,6 +52,8 @@ export class GameManager extends Component {
             this.playerCtrl.setInputActive(false);
             // 重置人物位置
             this.playerCtrl.node.setPosition(Vec3.ZERO);
+            // 重置已经移动的步长数据
+            this.playerCtrl.reset();
         }
     }
 
@@ -125,6 +129,23 @@ export class GameManager extends Component {
     onStartButtonClicked() {
         // 点击主界面 play 按钮，开始游戏
         this.curState = GameState.GS_PLAYING;
+    }
+
+    // 判断输赢
+    checkResult(moveIndex: number) {
+        console.log("moveIndex: ", moveIndex, "roadLength: ", this.roadLength, "BlockType: ", this._road[moveIndex]);
+        if (moveIndex < this.roadLength) {
+            // 跳到了坑里
+            if (this._road[moveIndex] == BlockType.BT_NONE) {
+                this.curState = GameState.GS_INIT;
+            }
+        } else {  // 跳过了最大长度
+            this.curState = GameState.GS_INIT;
+        }
+    }
+
+    onPlayerJumpEnd(moveIndex: number) {
+        this.checkResult(moveIndex);
     }
 
     // update (deltaTime: number) {

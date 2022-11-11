@@ -25,10 +25,16 @@ export class PlayerController extends Component {
     private _deltaPos: Vec3 = new Vec3(0, 0, 0);
     // 角色目标位置
     private _targetPos: Vec3 = new Vec3();
+    // 记录自己跳了多少步
+    private _curMoveIndex = 0;
 
     start () {
         // Your initialization goes here.
         input.on(Input.EventType.MOUSE_UP, this.onMouseUp, this);
+    }
+
+    reset() {
+        this._curMoveIndex = 0;
     }
 
     setInputActive(active: boolean) {
@@ -69,6 +75,12 @@ export class PlayerController extends Component {
                 this.BodyAnim.play('twoStep');
             }
         }
+        this._curMoveIndex += step; // 更新步数
+    }
+
+    // 在每次跳跃结束发出消息
+    onOnceJumpEnd() {
+        this.node.emit('JumpEnd', this._curMoveIndex);
     }
 
     update (deltaTime: number) {
