@@ -70,10 +70,10 @@
     },
     "_lrot": {
       "__type__": "cc.Quat",
-      "x": -0.8005972817813567,
-      "y": -0.1453229557254247,
-      "z": -0.33176781330654553,
-      "w": 0.4773419623260901
+      "x": -0.08619841216052426,
+      "y": 0.14724695169538116,
+      "z": 0.012882439012095185,
+      "w": 0.9852523594097718
     },
     "_lscale": {
       "__type__": "cc.Vec3",
@@ -84,9 +84,9 @@
     "_layer": 1073741824,
     "_euler": {
       "__type__": "cc.Vec3",
-      "x": -120.254,
-      "y": -42.248,
-      "z": -4.821
+      "x": -10,
+      "y": 17,
+      "z": 0
     },
     "_id": "c0y6F5f+pAvI805TdmxIjx"
   },
@@ -491,7 +491,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": 0
+      "z": -1
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -538,7 +538,7 @@
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@801ec",
       "__expectedType__": "cc.Mesh"
     },
-    "_shadowCastingMode": 0,
+    "_shadowCastingMode": 1,
     "_shadowReceivingMode": 1,
     "_shadowBias": 0,
     "_shadowNormalBias": 0,
@@ -1835,15 +1835,15 @@
   },
   {
     "__type__": "cc.ShadowsInfo",
-    "_enabled": false,
+    "_enabled": true,
     "_type": 0,
     "_normal": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 1,
-      "z": 0
+      "y": 0,
+      "z": 1
     },
-    "_distance": 0,
+    "_distance": 1,
     "_shadowColor": {
       "__type__": "cc.Color",
       "r": 76,
